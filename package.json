@@ -1,0 +1,86 @@
+{
+  "name": "commit-client",
+  "version": "0.0.0-development",
+  "description": "A client for commit messages in git",
+  "main": "index.js",
+  "scripts": {
+    "test": "find ./ -type f -name '*.spec.ts' -not -path './node_modules/*' -print | xargs npx tsx --no-warnings --test",
+    "prepare": "husky install",
+    "prepublish": "npx swc -d dist ./src"
+  },
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./export.js",
+      "node": "./export.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NordicSemiconductor/asset-tracker-lwm2m-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NordicSemiconductor/asset-tracker-lwm2m-js/issues"
+  },
+  "homepage": "https://github.com/NordicSemiconductor/asset-tracker-lwm2m-js#readme",
+  "keywords": [
+    "git",
+    "commit",
+    "AI",
+    "chatGPT"
+  ],
+  "author": "Mauro Lopez",
+  "license": "ISC",
+  "prettier": "@nordicsemiconductor/asset-tracker-cloud-code-style/.prettierrc",
+  "lint-staged": {
+    "*.{md,json,yaml,yml}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --ext .js,.ts"
+    ]
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=9"
+  },
+  "release": {
+    "branches": [
+      "saga"
+    ],
+    "remoteTags": true,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false,
+          "failTitle": false
+        }
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "18.1.0",
+    "@nordicsemiconductor/asset-tracker-cloud-code-style": "12.0.102",
+    "@nordicsemiconductor/eslint-config-asset-tracker-cloud-typescript": "16.0.23",
+    "@swc/cli": "0.1.62",
+    "@types/node": "20.8.9",
+    "@typescript-eslint/eslint-plugin": "6.9.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-import": "2.29.0",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-unicorn": "48.0.1",
+    "husky": "8.0.3",
+    "prettier": "3.0.3",
+    "tsx": "3.14.0",
+    "typescript": "5.2.2"
+  }
+}
