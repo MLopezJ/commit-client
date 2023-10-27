@@ -10,12 +10,14 @@ void describe('getCommitMessages', () => {
 		const until = '2023-10-18'
 		const expected = [
 			{
-				title: 'docs: remove commented code',
+				type: 'docs',
+				title: ' remove commented code',
 				body: undefined,
 				sha: '7a5982f9bbaa711120755e8b4e8adc6ebb25d190',
 			},
 			{
-				title: 'fix: rename variables',
+				type: 'fix',
+				title: ' rename variables',
 				body: 'improve readability',
 				sha: '75b88cb2180877b2e55e12c72242e3fe39ad3b25',
 			},

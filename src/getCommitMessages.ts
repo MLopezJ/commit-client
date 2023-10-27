@@ -19,6 +19,7 @@ type CommitInfo = {
 }
 
 type CommitMessages = {
+	type: string
 	title: string
 	body: string
 	sha: string
@@ -44,10 +45,23 @@ export const getCommitMessages = async ({
 
 	const messages = request.map((git: CommitInfo) => {
 		const message = git.commit.message.split('\n\n')
+		const type = message[0]?.split(':')
+		const commitType = type !== undefined ? type[0] : ''
+		const commitTitle = type !== undefined ? type[1] : ''
 		if (message.length > 1) {
-			return { title: message[0], body: message[1], sha: git.sha }
+			return {
+				type: commitType,
+				title: commitTitle,
+				body: message[1],
+				sha: git.sha,
+			}
 		}
-		return { title: message[0], body: undefined, sha: git.sha }
+		return {
+			type: commitType,
+			title: commitTitle,
+			body: undefined,
+			sha: git.sha,
+		}
 	})
 	return messages
 }
