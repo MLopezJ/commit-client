@@ -3,9 +3,9 @@
 
 ## Expected input
 ```
-// 1- list of commit messages
+// 1- list of commit messages [ X ]
 
-// 2- prompt with a description of the project
+// 2- prompt with a description of the project [  ]
 ```
 
 ## Expected output
